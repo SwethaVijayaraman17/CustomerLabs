@@ -47,6 +47,7 @@ const PopupComponent = ({ setPopup }) => {
 
   const [schemaList, setSchemaList] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
+  const [message, setmesaage] = useState("");
   const [segName, setSegName] = useState("");
   const [dropDownOpt, setDropDownOpt] = useState(options);
   const [open, setOpen] = useState(false);
@@ -80,12 +81,17 @@ const PopupComponent = ({ setPopup }) => {
       schema: schema,
     };
     try {
-      await axios.post(url, obj);
-      setSchemaList([]);
-      setSegName("");
-      setSelectedOption(null);
+      if (schema.length !== 0 && segName !== "") {
+        await axios.post(url, obj);
+        setSchemaList([]);
+        setSegName("");
+        setSelectedOption(null);
+        setDropDownOpt(options);
+        setmesaage("Segment saved successfully");
+      } else {
+        setmesaage("Please fill the fields to save the segment");
+      }
       setOpen(true);
-      setDropDownOpt(options);
       setTimeout(() => {
         setOpen(false);
       }, 1000);
@@ -193,7 +199,7 @@ const PopupComponent = ({ setPopup }) => {
       <TransitionablePortal closeOnTriggerClick open={open}>
         <Segment
           style={{
-            left: "40%",
+            left: "30%",
             position: "fixed",
             top: "30%",
             zIndex: 1000,
@@ -205,7 +211,7 @@ const PopupComponent = ({ setPopup }) => {
             padding: "24px",
           }}
         >
-          <h1>Segment Saved Successfully</h1>
+          <h1>{message}</h1>
           <p>Thank You !</p>
         </Segment>
       </TransitionablePortal>

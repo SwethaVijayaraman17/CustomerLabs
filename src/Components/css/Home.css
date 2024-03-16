@@ -1,0 +1,32 @@
+.App {
+  font-family: "Gill Sans", sans-serif;
+}
+.sidebarBg {
+  background-color: #b7b7b7 !important;
+}
+.sidebarPusher {
+  min-height: 100vh !important;
+  padding: 0px !important;
+}
+.header {
+  padding: 35px 20px;
+  font-size: 1.1vw;
+  background-color: #42a5b7;
+  color: white;
+  font-weight: 700;
+}
+.sidebarPusher > button {
+  padding: 20px;
+  border: 3px solid white;
+  color: white;
+  background-color: #b7b7b7 !important;
+  font-size: 1vw;
+  margin: 2vw 0vw 0vw 5vw !important;
+  cursor: pointer;
+}
+
+.sidebarPushable {
+  min-width: 30vw !important;
+  text-align: left !important;
+  display: flex !important;
+}
